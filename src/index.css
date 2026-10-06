@@ -1,0 +1,304 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+}
+
+.font-pixel {
+  font-family: 'Press Start 2P', monospace;
+}
+
+/* Pixel art rendering rule */
+.pixelated {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+/* Retro Game Box Shadows */
+.pixel-border {
+  box-shadow: 
+    -4px 0 0 0 #0f172a,
+    4px 0 0 0 #0f172a,
+    0 -4px 0 0 #0f172a,
+    0 4px 0 0 #0f172a;
+}
+
+.pixel-border-gold {
+  box-shadow: 
+    -4px 0 0 0 #78350f,
+    4px 0 0 0 #78350f,
+    0 -4px 0 0 #78350f,
+    0 4px 0 0 #78350f,
+    inset -4px -4px 0 0 #b45309,
+    inset 4px 4px 0 0 #fde047;
+}
+
+.pixel-border-teal {
+  box-shadow: 
+    -4px 0 0 0 #042f2e,
+    4px 0 0 0 #042f2e,
+    0 -4px 0 0 #042f2e,
+    0 4px 0 0 #042f2e,
+    inset -3px -3px 0 0 #0f766e,
+    inset 3px 3px 0 0 #2dd4bf;
+}
+
+.pixel-border-danger {
+  box-shadow: 
+    -4px 0 0 0 #450a0a,
+    4px 0 0 0 #450a0a,
+    0 -4px 0 0 #450a0a,
+    0 4px 0 0 #450a0a,
+    inset -3px -3px 0 0 #991b1b,
+    inset 3px 3px 0 0 #f87171;
+}
+
+/* Scanline and CRT retro effects (subtle) */
+.scanlines {
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.25) 50%
+  ), linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.03),
+    rgba(0, 255, 0, 0.01),
+    rgba(0, 0, 255, 0.03)
+  );
+  background-size: 100% 4px, 6px 100%;
+  pointer-events: none;
+}
+
+/* Keyframes for game atmospheric effects */
+@keyframes floatUp {
+  0% { transform: translateY(0px) scale(0.9); opacity: 0.8; }
+  50% { opacity: 1; }
+  100% { transform: translateY(-30px) scale(1.1); opacity: 0; }
+}
+
+.animate-evaporate {
+  animation: floatUp 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes fireFlicker {
+  0%, 100% { transform: scale(1) rotate(-1deg); filter: brightness(1); }
+  50% { transform: scale(1.1) rotate(2deg); filter: brightness(1.25); }
+}
+
+.animate-fire {
+  animation: fireFlicker 0.4s ease-in-out infinite;
+}
+
+@keyframes rainFall {
+  0% { transform: translateY(-100px) translateX(-20px); opacity: 0.7; }
+  100% { transform: translateY(700px) translateX(40px); opacity: 0.9; }
+}
+
+.animate-rain {
+  animation: rainFall 0.8s linear infinite;
+}
+
+@keyframes smokeRise {
+  0% { transform: translate(0, 0) scale(0.8); opacity: 0.3; }
+  50% { transform: translate(-10px, -20px) scale(1.2); opacity: 0.7; }
+  100% { transform: translate(15px, -45px) scale(1.6); opacity: 0; }
+}
+
+.animate-smoke {
+  animation: smokeRise 2.5s ease-out infinite;
+}
+
+/* Glowing Waypoint Arrow animations */
+@keyframes glowingArrowPulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 6px rgba(251, 191, 36, 0.9)) drop-shadow(0 0 14px rgba(245, 158, 11, 0.7));
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    filter: drop-shadow(0 0 12px rgba(250, 204, 21, 1)) drop-shadow(0 0 24px rgba(245, 158, 11, 0.9));
+    transform: translateY(-6px) scale(1.1);
+  }
+}
+
+.animate-glowing-arrow {
+  animation: glowingArrowPulse 1.2s ease-in-out infinite;
+}
+
+@keyframes beaconRing {
+  0% { transform: scale(0.5); opacity: 0.9; }
+  100% { transform: scale(2.0); opacity: 0; }
+}
+
+.animate-beacon-ring {
+  animation: beaconRing 1.6s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+/* Child-friendly cartoon button 3D depth and pop */
+.btn-cartoon-amber {
+  background: linear-gradient(180deg, #fde047 0%, #f59e0b 100%);
+  box-shadow: 0 5px 0 #b45309, 0 8px 16px rgba(0,0,0,0.25);
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+.btn-cartoon-amber:active {
+  transform: translateY(4px);
+  box-shadow: 0 1px 0 #b45309, 0 3px 8px rgba(0,0,0,0.2);
+}
+
+.btn-cartoon-blue {
+  background: linear-gradient(180deg, #38bdf8 0%, #0284c7 100%);
+  box-shadow: 0 5px 0 #0369a1, 0 8px 16px rgba(0,0,0,0.25);
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+.btn-cartoon-blue:active {
+  transform: translateY(4px);
+  box-shadow: 0 1px 0 #0369a1, 0 3px 8px rgba(0,0,0,0.2);
+}
+
+.btn-cartoon-emerald {
+  background: linear-gradient(180deg, #4ade80 0%, #16a34a 100%);
+  box-shadow: 0 5px 0 #15803d, 0 8px 16px rgba(0,0,0,0.25);
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+.btn-cartoon-emerald:active {
+  transform: translateY(4px);
+  box-shadow: 0 1px 0 #15803d, 0 3px 8px rgba(0,0,0,0.2);
+}
+
+.btn-cartoon-white {
+  background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%);
+  box-shadow: 0 4px 0 #cbd5e1, 0 6px 14px rgba(0,0,0,0.15);
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+.btn-cartoon-white:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #cbd5e1, 0 2px 6px rgba(0,0,0,0.1);
+}
+
+@keyframes bounceSoft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.animate-bounce-soft {
+  animation: bounceSoft 1.8s ease-in-out infinite;
+}
+
+/* Cloud Wipe Curtain Animations */
+@keyframes cloudSweepLeft {
+  0% { transform: translateX(-110%); }
+  100% { transform: translateX(0%); }
+}
+
+@keyframes cloudSweepRight {
+  0% { transform: translateX(110%); }
+  100% { transform: translateX(0%); }
+}
+
+@keyframes cloudExitLeft {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-110%); }
+}
+
+@keyframes cloudExitRight {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(110%); }
+}
+
+.animate-cloud-in-left {
+  animation: cloudSweepLeft 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-cloud-in-right {
+  animation: cloudSweepRight 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-cloud-out-left {
+  animation: cloudExitLeft 0.6s cubic-bezier(0.7, 0, 0.84, 0) forwards;
+}
+
+.animate-cloud-out-right {
+  animation: cloudExitRight 0.6s cubic-bezier(0.7, 0, 0.84, 0) forwards;
+}
+
+@keyframes cardSpringIn {
+  0% { transform: scale(0.6) translateY(20px); opacity: 0; }
+  70% { transform: scale(1.05) translateY(-4px); opacity: 1; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.animate-card-spring {
+  animation: cardSpringIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes cloudBobbing {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(1deg); }
+}
+
+.animate-cloud-bob {
+  animation: cloudBobbing 3s ease-in-out infinite;
+}
+
+/* River Flow and Water Ripple Animations */
+@keyframes riverFlow {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-river-flow {
+  animation: riverFlow 6s linear infinite;
+}
+
+.animate-river-flow-fast {
+  animation: riverFlow 3.5s linear infinite;
+}
+
+@keyframes waterGlint {
+  0%, 100% { opacity: 0.2; transform: scale(0.8); }
+  50% { opacity: 0.9; transform: scale(1.15); }
+}
+
+.animate-water-glint {
+  animation: waterGlint 2s ease-in-out infinite;
+}
+
+@keyframes waterRipple {
+  0% { transform: scaleX(0.9) translateY(0); opacity: 0.4; }
+  50% { transform: scaleX(1.1) translateY(-2px); opacity: 0.8; }
+  100% { transform: scaleX(0.9) translateY(0); opacity: 0.4; }
+}
+
+.animate-water-ripple {
+  animation: waterRipple 3s ease-in-out infinite;
+}
+
+/* Curved River Path Stream Flow Animations */
+@keyframes curveStream1 {
+  0% { stroke-dashoffset: 80; }
+  100% { stroke-dashoffset: 0; }
+}
+
+@keyframes curveStream2 {
+  0% { stroke-dashoffset: 120; }
+  100% { stroke-dashoffset: 0; }
+}
+
+@keyframes curveStream3 {
+  0% { stroke-dashoffset: 60; }
+  100% { stroke-dashoffset: 0; }
+}
+
+.animate-curve-stream-1 {
+  animation: curveStream1 2s linear infinite;
+}
+
+.animate-curve-stream-2 {
+  animation: curveStream2 3.2s linear infinite;
+}
+
+.animate-curve-stream-3 {
+  animation: curveStream3 1.6s linear infinite;
+}
+

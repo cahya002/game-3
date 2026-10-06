@@ -1,0 +1,8 @@
+{
+  "name": "Remix Remix Petualangan Lestari: Rahasia Air \u0026 Udara",
+  "description": "Game edukasi interaktif IPAS SD Kelas 5-6 bertema siklus air dan sistem pernapasan manusia dengan integrasi Articulate Storyline 3 dan PWA.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
